@@ -2,6 +2,7 @@ package com.bigbigrain.mp1;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -107,7 +108,11 @@ public class MpTest {
 	//			.last("desc limit 1,3")
 	//			);
 	//	System.out.println(emps);
-		
+		List<Employee> empList = employeeMapper.selectPage(new Page<Employee>(1, 2), new EntityWrapper<Employee>().between("age", 18, 50)
+																							.eq("gender", 1)
+																							.like("last_name", "B")
+		);
+		System.out.println(empList);
 	}
 	
 	
